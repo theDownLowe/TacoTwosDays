@@ -10,10 +10,16 @@ import android.view.ViewGroup;
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * This is the Default drawer tab from the HomeActivty drawer,
+ *      it allows the user to search for a restaurant with several
+ *      different criteria, displays a map that shows the users current
+ *      location and near-by restaurants, and has two card displays of
+ *      restaurants, one with favorites and the other with history.
+ *
+ *      @version 1.0
+ *      @author Trevor N. Lowe
  */
 public class SearchFragment extends Fragment {
-
 
     public SearchFragment() {
         // Required empty public constructor

@@ -10,10 +10,14 @@ import android.view.ViewGroup;
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * This Fragment holds the users information that can be accessed from the
+ *  drawer menu in the Home Activity. The user will have the option of changing
+ *  their password, or certain preferences.
+ *
+ *  @version 1.0
+ *  @author Trevor N. Lowe
  */
 public class AccountFragment extends Fragment {
-
 
     public AccountFragment() {
         // Required empty public constructor

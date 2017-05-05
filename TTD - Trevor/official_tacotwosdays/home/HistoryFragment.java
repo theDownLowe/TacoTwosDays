@@ -10,7 +10,12 @@ import android.view.ViewGroup;
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ *  This fragment contains the history of restaurants that the user
+ *      has selected. It is accessed through the history menu item
+ *      from the drawer in HomeActivity.
+ *
+ *  @version 1.0
+ *  @author Trevor N. Lowe
  */
 public class HistoryFragment extends Fragment {
 

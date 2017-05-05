@@ -18,8 +18,18 @@ import android.view.MenuItem;
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 import group2.tcss450.uw.edu.official_tacotwosdays.start.MainActivity;
 
+/**
+ * The main activity that is used after the user has logged in. It contains
+ *      a drawer with several different functionalities including: searching,
+ *      updating account information, accessing favorites, accessing history,
+ *      and logging out.
+ *
+ *      @version 1.0
+ *      @author Trevor N. Lowe
+ */
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Creates the navigation drawer
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -38,14 +49,14 @@ public class HomeActivity extends AppCompatActivity
                 drawer.requestLayout();
             }
         };
-
-
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Sets navigation view
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Sets starting fragment to search fragment
         if (savedInstanceState == null) {
             if (findViewById(R.id.homeFragmentContainer) != null) {
                 getSupportFragmentManager().beginTransaction()
@@ -87,6 +98,12 @@ public class HomeActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Swaps the current fragment in HomeActivity with the
+     *      fragment passed to it.
+     *
+     * @param newFrag the new fragment replace current fragment
+     */
     private void swapFragments(Fragment newFrag) {
         if (findViewById(R.id.homeFragmentContainer) != null) {
             getSupportFragmentManager().beginTransaction()
