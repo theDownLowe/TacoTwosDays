@@ -22,15 +22,27 @@ import java.net.URLEncoder;
 
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 
+/**
+ * Allows the user to register for new login credentials, is accessed
+ *      through the StartFragment in the MainActivity.
+ *
+ *  @version 1.0
+ *  @author Trevor N. Lowe
+ */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 
+    /** The registration PHP code. **/
     private static final String URL
             = "http://cssgate.insttech.washington.edu/" +
             "~tnlral/TacoTwosDays/register";
 
+    /** Main listener for the fragment. **/
     private OnFragmentInteractionListener mListener;
+    /** The users username input. **/
     private EditText mUsernameText;
+    /** The users password input. **/
     private EditText mPasswordText;
+    /** The users retype password input. **/
     private EditText mRePasswordText;
 
     public RegisterFragment() {
@@ -74,6 +86,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             String usernameText = mUsernameText.getText().toString();
             String passwordText = mPasswordText.getText().toString();
             String rePasswordText = mRePasswordText.getText().toString();
+            // If any blank fields exist
             if (usernameText.equals("") || passwordText.equals("") || rePasswordText.equals("") ||
                     !passwordText.equals(rePasswordText)) {
                 if (usernameText.equals(""))
@@ -86,7 +99,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     mRePasswordText.setError("Passwords do not match!");
             } else if (usernameText.contains(",") || (usernameText.contains("\""))) {
                 mUsernameText.setError("Cannot contain , or \"!");
-            } else {
+            } else {    // Enter new Login/Registration to database
                 AsyncTask<String, Void, String> task = new newUserWebServiceTask();
                 task.execute(URL, usernameText, passwordText);
             }
@@ -95,10 +108,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /** Main listener interface for the fragment. **/
     public interface OnFragmentInteractionListener {
         void onRegisterFragmentInteraction();
     }
 
+    /** Enters new user information to the database. **/
     private class newUserWebServiceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {

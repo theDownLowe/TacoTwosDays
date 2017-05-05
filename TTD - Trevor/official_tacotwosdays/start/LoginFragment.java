@@ -22,14 +22,26 @@ import java.net.URLEncoder;
 
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 
+/**
+ * Allows the user to login given their previously created credentials.
+ *      Is navigated to from either StartFragment or after registering in
+ *      RegisterFragment.
+ *
+ *  @version 1.0
+ *  @author Trevor N. Lowe
+ */
 public class LoginFragment extends Fragment implements View.OnClickListener{
 
+    /** The login PHP code. **/
     private static final String URL
             = "http://cssgate.insttech.washington.edu/" +
             "~tnlral/TacoTwosDays/login";
 
+    /** Main fragment listener. **/
     private OnFragmentInteractionListener mListener;
+    /** The username entered by the user. **/
     private EditText mUsernameText;
+    /** The password entered by the user. **/
     private EditText mPasswordText;
 
     public LoginFragment() {
@@ -72,6 +84,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         String username;
 
         if (mListener != null) {
+            // If entries for username and password are not blank.
             if (!mUsernameText.getText().toString().equals("")
                     && !mPasswordText.getText().toString().equals("")) {
                 username = mUsernameText.getText().toString();
@@ -89,10 +102,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     }
 
 
+    /** Main fragment listener interface. **/
     public interface OnFragmentInteractionListener {
         void onLoginFragmentInteraction(String username);
     }
 
+    /** Verifies username and password through the database. **/
     private class PostWebServiceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
@@ -131,13 +146,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
-            if (result.startsWith("Unable to")) {
+            if (result.startsWith("Unable to")) {   // Error
                 Toast.makeText(getActivity(), result, Toast.LENGTH_LONG)
                         .show();
                 return;
-            } else if (result.equals("") || result.equals(null)){
+            } else if (result.equals("") || result.equals(null)){   // Blank password returned
                 mUsernameText.setError("Incorrect Username!");
-            } else {
+            } else {    // Test for valid password
                 String password = "";
                 boolean found = false;
                 for (int i = 0; i < result.length() && !found; i++) {

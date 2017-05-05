@@ -10,6 +10,13 @@ import android.widget.Toast;
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 import group2.tcss450.uw.edu.official_tacotwosdays.home.HomeActivity;
 
+/**
+ * The Starting activity for the application, provides login and
+ *      registration functionality.
+ *
+ *  @version 1.0
+ *  @version Trevor N. Lowe
+ */
 public class MainActivity extends AppCompatActivity implements
     StartFragment.OnFragmentInteractionListener,
     LoginFragment.OnFragmentInteractionListener,
@@ -20,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Sets the start fragment to StartFragment
         if (savedInstanceState == null) {
             if (findViewById(R.id.startFragmentContainer) != null) {
                 getSupportFragmentManager().beginTransaction()
@@ -29,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Swaps the current fragment with the one passed in.
+     *
+     * @param newFrag The fragment to swap into the existing fragment
+     */
     private void swapFragments(Fragment newFrag) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.startFragmentContainer, newFrag)
