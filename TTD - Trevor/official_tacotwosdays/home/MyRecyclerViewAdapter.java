@@ -1,4 +1,4 @@
-package groupn.tcss450.uw.edu.officialtaco;
+package group2.tcss450.uw.edu.official_tacotwosdays.home;
 
 import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
@@ -22,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import groupn.tcss450.uw.edu.officialtaco.model.Setlist;
+import group2.tcss450.uw.edu.official_tacotwosdays.home.model.RestaurantList;
 
 /**
  * Created by John on 5/4/2017.
@@ -34,7 +34,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
     private static final String API_URL_ID = "https://maps.googleapis.com/maps/api/place/details/json?";
     private static final String API_KEY = "AIzaSyB6uUO1NN88F35RPpaxfWTOiXsyXFpgIAg";
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<Setlist.RestaurantItem> mDataset;
+    private ArrayList<RestaurantList.RestaurantItem> mDataset;
     private DisplayListFragment.OnFragmentInteractionListener mListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -59,7 +59,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyRecyclerViewAdapter(ArrayList<Setlist.RestaurantItem> myDataset,
+    public MyRecyclerViewAdapter(ArrayList<RestaurantList.RestaurantItem> myDataset,
                                  DisplayListFragment.OnFragmentInteractionListener listener) {
         mDataset = myDataset;
         mListener = listener;
