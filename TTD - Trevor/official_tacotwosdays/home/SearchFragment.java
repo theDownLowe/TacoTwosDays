@@ -58,7 +58,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_get_restaurant, container, false);
+        View v = inflater.inflate(R.layout.fragment_search, container, false);
         Button bb = (Button) v.findViewById(R.id.getRsearchButton);
         bb.setOnClickListener(this);
         Button b = (Button) v.findViewById(R.id.getRbutton2);
