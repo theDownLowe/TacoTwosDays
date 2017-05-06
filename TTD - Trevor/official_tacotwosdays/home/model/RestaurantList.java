@@ -1,4 +1,4 @@
-package group2.tcss450.uw.edu.official_tacotwosdays.homr.model;
+package group2.tcss450.uw.edu.official_tacotwosdays.home.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
