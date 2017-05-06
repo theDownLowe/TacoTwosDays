@@ -1,4 +1,4 @@
-package groupn.tcss450.uw.edu.officialtaco;
+package group2.tcss450.uw.edu.official_tacotwosdays.home;
 
 
 import android.os.Bundle;
