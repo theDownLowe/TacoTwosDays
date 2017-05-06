@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +18,11 @@ import android.view.MenuItem;
 
 import group2.tcss450.uw.edu.official_tacotwosdays.R;
 import group2.tcss450.uw.edu.official_tacotwosdays.start.MainActivity;
+import group2.tcss450.uw.edu.official_tacotwosdays.home.model.RestaurantList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * The main activity that is used after the user has logged in. It contains
@@ -28,7 +34,9 @@ import group2.tcss450.uw.edu.official_tacotwosdays.start.MainActivity;
  *      @author Trevor N. Lowe
  */
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        GetRestaurantFragment.OnFragmentInteractionListener,
+        DisplayListFragment.OnFragmentInteractionListener       {
 
 
     @Override
@@ -142,5 +150,59 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+                
+                
+                
+    @Override
+    public void onDisplayInteraction(JSONObject obj) {
+        DisplayFragment frag4 = new DisplayFragment();
+        Bundle args = new Bundle();
+        RestaurantList s = null;
+
+        try {
+            s = RestaurantList.getRestaurantListData(obj);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        args.putCharSequence("sTitle", RestaurantList.getTitle());
+        args.putCharSequence("sUrl", RestaurantList.getUrl());
+        args.putCharSequence("sWebsite", RestaurantList.getWebsite());
+        args.putCharSequence("sAddress", RestaurantList.getAddress());
+        args.putCharSequence("sPhone", RestaurantList.getPhone());
+        args.putCharSequence("sHours", RestaurantList.getHours());
+        args.putCharSequence("sTypes", RestaurantList.getTypes());
+        args.putCharSequence("sRating", RestaurantList.getRating());
+        frag4.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.homeFragmentContainer, frag4)
+                .addToBackStack(null);
+        transaction.commit();
+    }
+
+                
+                
+                //changes john made
+    @Override
+    public void onDisplayListInteraction(JSONArray ar) {
+
+        DisplayListFragment frag4 = new DisplayListFragment();
+        Bundle args = new Bundle();
+        Intent intent = new Intent(MainActivity.this, DisplayListFragment.class);
+        RestaurantList s = null;
+        try {
+            s = RestaurantList.getList(ar);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        args.putParcelableArrayList("mylist", RestaurantList.getItems());
+
+        frag4.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.homeFragmentContainer, frag4)
+                .addToBackStack(null);
+        transaction.commit();
     }
 }
