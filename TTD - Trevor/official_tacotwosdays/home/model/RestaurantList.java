@@ -1,4 +1,4 @@
-package groupn.tcss450.uw.edu.officialtaco.model;
+package group2.tcss450.uw.edu.official_tacotwosdays.homr.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by John on 4/23/2017.
  */
 
-public final class Setlist implements Parcelable {
+public final class RestaurantList implements Parcelable {
 
     /**
      * An array of sample (dummy) items.
@@ -47,8 +47,8 @@ public final class Setlist implements Parcelable {
     private static String mId;
 
 
-    public static Setlist getSetListData(JSONObject object) throws JSONException {
-        Setlist current = null;
+    public static RestaurantList getRestaurantListData(JSONObject object) throws JSONException {
+        RestaurantList current = null;
 
         current.mName = object.getString("name");
 
@@ -73,8 +73,8 @@ public final class Setlist implements Parcelable {
         return current;
     }
 
-    public static Setlist getList(JSONArray arr) throws JSONException {
-        Setlist curr = null;
+    public static RestaurantList getList(JSONArray arr) throws JSONException {
+        RestaurantList curr = null;
         for(int i = 0; i<arr.length();i++) {
             JSONObject ob = arr.getJSONObject(i);
             ITEMS.add(new RestaurantItem(ob.getString("place_id"), ob.getString("name"),
@@ -116,7 +116,7 @@ public final class Setlist implements Parcelable {
 
     public static ArrayList<RestaurantItem> getItems() {  return ITEMS;  }
 
-    public Setlist(Parcel in) {
+    public RestaurantList(Parcel in) {
         String[] data = new String[9];
 
         in.readStringArray(data);
@@ -153,12 +153,12 @@ public final class Setlist implements Parcelable {
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Setlist createFromParcel(Parcel in) {
-            return new Setlist(in);
+        public RestaurantList createFromParcel(Parcel in) {
+            return new RestaurantList(in);
         }
 
-        public Setlist[] newArray(int size) {
-            return new Setlist[size];
+        public RestaurantList[] newArray(int size) {
+            return new RestaurantList[size];
         }
     };
 
