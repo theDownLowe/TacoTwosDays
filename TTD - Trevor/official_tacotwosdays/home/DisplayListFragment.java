@@ -19,13 +19,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import groupn.tcss450.uw.edu.officialtaco.model.Setlist;
+import group2.tcss450.uw.edu.official_tacotwosdays.home.model.RestaurantList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DisplayListFragment extends Fragment {
-    private ArrayList<Setlist.RestaurantItem> mDataset;
+    private ArrayList<RestaurantList.RestaurantItem> mDataset;
     private OnFragmentInteractionListener mListener;
     public DisplayListFragment() {
 
