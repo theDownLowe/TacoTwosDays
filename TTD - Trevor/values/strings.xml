@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Official-TacoTwosDays</string>
+    <string name="title_activity_home">Taco Twos Days</string>
+
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Action Bar -->
+    <string name="action_settings">Settings</string>
+
+    <!-- START ACTIVITY (MAIN) -->
+    <!-- Start Fragment -->
+    <string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+
+    <!-- Login Fragmnet -->
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+
+    <!-- Register Fragment -->
+    <string name="hint_newUsername">New Username</string>
+    <string name="hint_newPassword">New Password</string>
+    <string name="hint_retypePassword">Re-type Password</string>
+
+
+    <!-- HOME ACTIVITY -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
